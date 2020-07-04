@@ -1,8 +1,26 @@
-﻿@{
+﻿@using DressStore.Models.ViewModels
+@model DressStore.Models.ViewModels.IndexViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form class="form-inline">
+    <label>Choose in company:</label>
+    <select name="companyId" class="form-control">
+        @foreach (CompanyModel comp in Model.Companies)
+        {
+            <option value="@comp.Id">@comp.Name</option>
+        }
+    </select>
+    <input type="submit"/>
+    <br/>
+    <table class="table">
+        @foreach(Dress d in Model.Dresses)
+        {
+            <tr>
+                <td>@d.Name</td>
+                <td>@d.Company?.Name</td>
+                <td>@d.Price</td>
+            </tr>
+        }
+    </table>
+</form>
