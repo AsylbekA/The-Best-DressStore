@@ -46,6 +46,15 @@ namespace DressStore.Controllers
             return View(ivm);
         }
 
+        public IActionResult GetData(string[] items)
+        {
+            string result = "";
+            foreach (var item in items)
+          
+                result += item + ";";
+            return Content(result);
+        }
+
         public IActionResult Privacy()
         {
             return View();
